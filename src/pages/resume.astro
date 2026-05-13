@@ -5,42 +5,40 @@ import TechBadge from '../components/TechBadge.astro';
 
 const skills = [
   'Linux',
-  'Windows Server',
   'Docker',
-  'Networking',
-  'VPN',
-  'Firewalls',
+  'Reverse Proxying',
+  'DNS Troubleshooting',
+  'VPN / Private Access',
   'Python',
   'PowerShell',
-  'Cloudflare',
-  'ZFS',
-  'Tailscale',
-  'Security operations fundamentals',
+  'Cloudflare Tunnel',
+  'Backups / Restores',
+  'Operational Logging',
 ];
 
 const resumeSections = [
   {
     title: 'Infrastructure Operations',
     items: [
-      'Linux-based service deployment and maintenance',
-      'Dockerized application planning and service grouping',
-      'Reverse proxy and protected ingress design',
+      'Linux service deployment, maintenance, package updates, and service health checks',
+      'Dockerized workload operation with deliberate networks, volumes, and restart behavior',
+      'Reverse proxy and tunnel-based ingress for selected public services',
     ],
   },
   {
-    title: 'Security & Access',
+    title: 'Access & Exposure Control',
     items: [
-      'Private administration strategy for internal tools',
-      'VPN and access policy planning',
-      'Log and configuration hygiene for sensitive environments',
+      'Private administration workflows using VPN-style access and internal hostnames',
+      'DNS, firewall, and proxy troubleshooting for reachable and intentionally unreachable services',
+      'Logging practices that preserve operational signal without publishing sensitive environment details',
     ],
   },
   {
     title: 'Automation & Reliability',
     items: [
-      'Python and PowerShell scripting for repeatable operations',
-      'Backup, snapshot, and rollback planning',
-      'Monitoring practices focused on actionable operational signals',
+      'Python and PowerShell automation for repeatable file, service, and maintenance workflows',
+      'Backup, restore, snapshot, and rollback notes for stateful services',
+      'Monitoring focused on service health, storage pressure, latency, and proxy reachability',
     ],
   },
 ];
@@ -48,16 +46,16 @@ const resumeSections = [
 
 <Layout
   title="Resume | Afshin Saberi"
-  description="Canada-based Infrastructure, Systems, and Security Engineer resume focused on Linux, Docker, networking, automation, and security operations."
+  description="Canada-based Infrastructure, Systems, and Security Engineer focused on Linux service operations, Docker workloads, private access, automation, and restore planning."
 >
-  <section class="py-10">
+  <section class="min-w-0 py-10">
     <SectionHeader
       eyebrow="Experience"
       title="Resume"
-      description="Canada-based Infrastructure / Systems / Security Engineer focused on reliable systems, secure access patterns, automation, and practical operations."
+      description="Hands-on infrastructure and systems work focused on operating services, reducing unnecessary exposure, automating carefully, and keeping recovery paths understandable."
     />
-    <div class="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
-      <aside class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+    <div class="grid min-w-0 gap-6 lg:grid-cols-[0.7fr_1.3fr]">
+      <aside class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
         <h2 class="text-xl font-semibold text-[var(--text-strong)]">Afshin Saberi</h2>
         <p class="mt-2 text-[var(--text-soft)]">Infrastructure / Systems / Security Engineer</p>
         <p class="mt-2 text-sm text-[var(--accent)]">Canada-based</p>
@@ -66,10 +64,10 @@ const resumeSections = [
         </div>
       </aside>
 
-      <div class="space-y-4">
+      <div class="min-w-0 space-y-4">
         {
           resumeSections.map((section) => (
-            <section class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+            <section class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
               <h2 class="text-lg font-semibold text-[var(--text-strong)]">{section.title}</h2>
               <ul class="mt-4 space-y-3 text-sm leading-7 text-[var(--text-soft)]">
                 {section.items.map((item) => <li class="border-l border-[color:var(--accent-border)] pl-4">{item}</li>)}

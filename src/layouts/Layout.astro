@@ -4,8 +4,8 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const {
-  title = 'Afshin Saberi | Infrastructure Lab & Technical Portfolio',
-  description = 'Canada-based infrastructure, systems, and security engineering portfolio.',
+  title = 'Afshin Saberi | Infrastructure & Systems Operations',
+  description = 'Canada-based infrastructure and systems portfolio focused on Linux operations, Docker services, private access, and reliable service exposure.',
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://example.com');
@@ -18,7 +18,14 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://example.
     <script is:inline>
       (() => {
         const themes = ['ops-dark', 'terminal-green', 'cloudflare-edge', 'clean-light'];
-        const stored = localStorage.getItem('theme');
+        let stored = null;
+
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {
+          stored = null;
+        }
+
         const theme = themes.includes(stored)
           ? stored
           : window.matchMedia('(prefers-color-scheme: light)').matches

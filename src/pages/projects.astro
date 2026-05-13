@@ -5,59 +5,59 @@ import SectionHeader from '../components/SectionHeader.astro';
 
 const projects = [
   {
-    title: 'Self-Hosted Infrastructure Platform',
-    problem: 'Multiple services need reliable operation without exposing private administration surfaces.',
-    solution: 'Designed a layered model with edge protection, reverse proxy routing, Docker isolation, monitoring, and documented restore paths.',
-    technologies: ['Linux', 'Docker', 'Cloudflare', 'Reverse Proxy', 'ZFS'],
-    security: 'Keeps admin tools private, uses sanitized public service names, and separates services by access pattern.',
-    demonstrates: 'Systems design, service ownership, operational discipline, and risk-aware infrastructure communication.',
+    title: 'Self-Hosted Service Stack',
+    problem: 'Multiple services need stable ingress, predictable container boundaries, and administrative access that does not depend on public routes.',
+    solution: 'Run services behind a reverse proxy with Cloudflare Tunnel-style exposure, small Docker networks, health checks, and documented restore inputs.',
+    technologies: ['Linux', 'Docker', 'Reverse Proxy', 'Cloudflare Tunnel', 'DNS'],
+    security: 'Public hostnames are separated from private administration paths, and service groups are split by the traffic they actually need.',
+    demonstrates: 'Service ownership, ingress discipline, Docker networking judgment, and practical exposure reduction.',
   },
   {
-    title: 'Subtitle Translation Automation Platform',
-    problem: 'Manual subtitle preparation and translation workflows are repetitive and error-prone.',
-    solution: 'Modeled an automation flow that receives controlled inputs, processes text assets, and produces repeatable outputs.',
-    technologies: ['Python', 'Automation', 'APIs', 'Docker'],
-    security: 'Uses placeholder service.example endpoints and avoids storing secrets, tokens, or file paths in visible logs.',
-    demonstrates: 'Workflow design, automation thinking, integration hygiene, and practical scripting ability.',
+    title: 'Constrained Automation Workflow',
+    problem: 'Repeated file-processing tasks need automation, but broad permissions and unclear logs can make automation harder to trust than the manual process.',
+    solution: 'Use Python-driven workflow steps with bounded inputs, explicit output locations, idempotent runs where possible, and logs that show decisions without storing payloads.',
+    technologies: ['Python', 'PowerShell', 'Docker', 'API Integration'],
+    security: 'Automation runs with scoped access and sanitized examples; operational logs avoid tokens, private paths, and raw content.',
+    demonstrates: 'Practical scripting, failure-aware automation, and restraint around credentials and logging.',
   },
   {
-    title: 'Media & Automation Stack',
-    problem: 'Media workflows require coordination across storage, processing, metadata, and scheduled automation.',
-    solution: 'Grouped services by responsibility and isolated supporting tools from public access.',
-    technologies: ['Docker', 'Storage', 'Networking', 'Monitoring'],
-    security: 'Separates internal tooling from public routes and avoids exposing service URLs or administrative ports.',
-    demonstrates: 'Operational architecture, Docker service planning, and clean documentation of complex systems.',
+    title: 'Storage-Backed Service Maintenance',
+    problem: 'Stateful services fail differently than stateless containers: permissions, mounts, disk health, and restore order become part of reliability.',
+    solution: 'Separate application config from data, document mounted paths, watch disk and service health, and keep rollback notes close to the service definition.',
+    technologies: ['Linux', 'Docker Volumes', 'Storage', 'Monitoring'],
+    security: 'Private paths and real hostnames stay out of public documentation while dependency order and recovery assumptions remain clear.',
+    demonstrates: 'Stateful service operations, storage awareness, and documentation that helps during maintenance.',
   },
   {
-    title: 'Secure Remote Access Design',
-    problem: 'Remote administration must be convenient without making internal dashboards public.',
-    solution: 'Designed private access patterns using VPN-style connectivity, access policies, and internal host aliases.',
-    technologies: ['Tailscale', 'VPN', 'Firewalls', 'Cloudflare Access'],
-    security: 'Administrative paths remain private with examples limited to admin.internal and automation.internal.',
-    demonstrates: 'Defense-in-depth thinking, identity-aware access design, and exposure reduction.',
+    title: 'Private Administration Access',
+    problem: 'Admin tools must stay reachable during maintenance without becoming another internet-facing service to patch, monitor, and explain.',
+    solution: 'Use VPN/private access workflows, internal hostnames, and a documented fallback path for device or DNS issues.',
+    technologies: ['VPN', 'Tailscale', 'DNS', 'Firewall Rules'],
+    security: 'Administrative interfaces remain on private routes; public examples use neutral names such as admin.internal.',
+    demonstrates: 'Access-control boundaries, operational tradeoff awareness, and network troubleshooting discipline.',
   },
   {
-    title: 'Backup & Rollback Planning',
-    problem: 'Production data and configuration can be lost or corrupted without tested rollback plans.',
-    solution: 'Outlined snapshot, backup, restore, and change rollback practices for service and storage recovery.',
-    technologies: ['ZFS', 'Backups', 'Linux', 'Documentation'],
-    security: 'Plans exclude private paths, usernames, logs, and credentials while preserving operational clarity.',
-    demonstrates: 'Reliability engineering, incident readiness, and practical production thinking.',
+    title: 'Restore and Rollback Notes',
+    problem: 'A backup existing somewhere is not the same as knowing how to bring a service back after a bad change or failed host.',
+    solution: 'Track restore inputs, service order, config assumptions, and rollback steps in a form that can be followed without relying on memory.',
+    technologies: ['Backups', 'Snapshots', 'Linux', 'Documentation'],
+    security: 'Recovery notes preserve procedure without publishing real paths, usernames, hostnames, or dataset names.',
+    demonstrates: 'Reliability thinking, change control habits, and realistic incident preparation.',
   },
 ];
 ---
 
 <Layout
   title="Projects | Afshin Saberi"
-  description="Infrastructure, automation, access design, media workflow, and backup planning project case studies using sanitized technical examples."
+  description="Infrastructure project summaries focused on Linux service operations, Docker workloads, private access, automation constraints, and restore planning."
 >
-  <section class="py-10">
+  <section class="min-w-0 py-10">
     <SectionHeader
       eyebrow="Work"
       title="Projects"
-      description="Case-study style summaries that explain the problem, solution, tooling, security considerations, and professional value without exposing sensitive infrastructure details."
+      description="Small operational case studies, written without real hostnames, private paths, or inventory details."
     />
-    <div class="grid gap-5 lg:grid-cols-2">
+    <div class="grid min-w-0 gap-5 lg:grid-cols-2">
       {projects.map((project) => <ProjectCard {...project} />)}
     </div>
   </section>

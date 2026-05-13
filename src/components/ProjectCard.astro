@@ -18,7 +18,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<article class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6 shadow-2xl shadow-black/20">
+<article class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6 shadow-2xl shadow-black/20">
   <h2 class="text-xl font-semibold text-[var(--text-strong)]">{title}</h2>
   <dl class="mt-5 space-y-4 text-sm leading-7">
     <div>
@@ -30,11 +30,11 @@ const {
       <dd class="text-[var(--text-soft)]">{solution}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-[var(--accent)]">Security considerations</dt>
+      <dt class="font-semibold text-[var(--accent)]">Operational boundary</dt>
       <dd class="text-[var(--text-soft)]">{security}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-[var(--accent)]">Professional signal</dt>
+      <dt class="font-semibold text-[var(--accent)]">What it demonstrates</dt>
       <dd class="text-[var(--text-soft)]">{demonstrates}</dd>
     </div>
   </dl>
