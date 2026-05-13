@@ -6,43 +6,53 @@ import SectionHeader from '../components/SectionHeader.astro';
 const projects = [
   {
     title: 'Self-Hosted Service Stack',
-    problem: 'Multiple services need stable ingress, predictable container boundaries, and administrative access that does not depend on public routes.',
-    solution: 'Run services behind a reverse proxy with Cloudflare Tunnel-style exposure, small Docker networks, health checks, and documented restore inputs.',
+    summary: 'A small Linux/Docker service environment focused on stable ingress, private administration, and service isolation.',
+    focus: [
+      'Reverse proxy routing with Cloudflare Tunnel-style exposure',
+      'Docker networks split by required communication',
+      'Health checks and rollback notes for updates',
+    ],
     technologies: ['Linux', 'Docker', 'Reverse Proxy', 'Cloudflare Tunnel', 'DNS'],
-    security: 'Public hostnames are separated from private administration paths, and service groups are split by the traffic they actually need.',
-    demonstrates: 'Service ownership, ingress discipline, Docker networking judgment, and practical exposure reduction.',
   },
   {
     title: 'Constrained Automation Workflow',
-    problem: 'Repeated file-processing tasks need automation, but broad permissions and unclear logs can make automation harder to trust than the manual process.',
-    solution: 'Use Python-driven workflow steps with bounded inputs, explicit output locations, idempotent runs where possible, and logs that show decisions without storing payloads.',
-    technologies: ['Python', 'PowerShell', 'Docker', 'API Integration'],
-    security: 'Automation runs with scoped access and sanitized examples; operational logs avoid tokens, private paths, and raw content.',
-    demonstrates: 'Practical scripting, failure-aware automation, and restraint around credentials and logging.',
+    summary: 'Automation for repeatable file and service tasks, designed to be easy to inspect when something fails.',
+    focus: [
+      'Bounded inputs and predictable output locations',
+      'Readable run state and retry behavior',
+      'Logs that explain decisions without storing sensitive payloads',
+    ],
+    technologies: ['Python', 'PowerShell', 'Docker', 'Controlled APIs'],
   },
   {
     title: 'Storage-Backed Service Maintenance',
-    problem: 'Stateful services fail differently than stateless containers: permissions, mounts, disk health, and restore order become part of reliability.',
-    solution: 'Separate application config from data, document mounted paths, watch disk and service health, and keep rollback notes close to the service definition.',
+    summary: 'Operational care for stateful services where mounts, permissions, restore order, and storage pressure matter.',
+    focus: [
+      'Config and data treated as separate restore inputs',
+      'Mounted paths and service order documented',
+      'Storage health and service checks used during maintenance',
+    ],
     technologies: ['Linux', 'Docker Volumes', 'Storage', 'Monitoring'],
-    security: 'Private paths and real hostnames stay out of public documentation while dependency order and recovery assumptions remain clear.',
-    demonstrates: 'Stateful service operations, storage awareness, and documentation that helps during maintenance.',
   },
   {
     title: 'Private Administration Access',
-    problem: 'Admin tools must stay reachable during maintenance without becoming another internet-facing service to patch, monitor, and explain.',
-    solution: 'Use VPN/private access workflows, internal hostnames, and a documented fallback path for device or DNS issues.',
-    technologies: ['VPN', 'Tailscale', 'DNS', 'Firewall Rules'],
-    security: 'Administrative interfaces remain on private routes; public examples use neutral names such as admin.internal.',
-    demonstrates: 'Access-control boundaries, operational tradeoff awareness, and network troubleshooting discipline.',
+    summary: 'Private access patterns for administration without turning internal tools into public services.',
+    focus: [
+      'VPN/private access before admin tools',
+      'DNS and access-rule troubleshooting separated',
+      'Fallback path considered for device or name-resolution issues',
+    ],
+    technologies: ['VPN', 'Tailscale', 'DNS', 'Network Access Rules'],
   },
   {
     title: 'Restore and Rollback Notes',
-    problem: 'A backup existing somewhere is not the same as knowing how to bring a service back after a bad change or failed host.',
-    solution: 'Track restore inputs, service order, config assumptions, and rollback steps in a form that can be followed without relying on memory.',
+    summary: 'Recovery notes focused on whether a service can actually be rebuilt after a bad change or failed host.',
+    focus: [
+      'Config source, mounted data, and service order captured',
+      'Restore verification instead of backup assumptions',
+      'Rollback notes kept close to deployment changes',
+    ],
     technologies: ['Backups', 'Snapshots', 'Linux', 'Documentation'],
-    security: 'Recovery notes preserve procedure without publishing real paths, usernames, hostnames, or dataset names.',
-    demonstrates: 'Reliability thinking, change control habits, and realistic incident preparation.',
   },
 ];
 ---
@@ -55,7 +65,7 @@ const projects = [
     <SectionHeader
       eyebrow="Work"
       title="Projects"
-      description="Small operational case studies, written without real hostnames, private paths, or inventory details."
+      description="A few representative areas of hands-on infrastructure work, kept sanitized and concise."
     />
     <div class="grid min-w-0 gap-5 lg:grid-cols-2">
       {projects.map((project) => <ProjectCard {...project} />)}

@@ -1,6 +1,6 @@
-# Afshin Saberi — Infrastructure Lab & Technical Portfolio
+# Afshin Saberi - Infrastructure & Systems Operations Portfolio
 
-A static technical portfolio showcasing infrastructure, systems, automation, and security-focused operations using sanitized public examples.
+A static Astro portfolio focused on Linux service operations, Docker workloads, reverse proxy routing, private access workflows, automation, monitoring, and restore-aware infrastructure practice.
 
 ## Tech Stack
 
@@ -9,28 +9,26 @@ A static technical portfolio showcasing infrastructure, systems, automation, and
 - TypeScript
 - Cloudflare Pages
 
-## Key Features
+## Site Content
 
-- Responsive design
-- Theme switcher
-- Sanitized infrastructure architecture
-- Project case studies
-- Security notes
-- Resume page
-- Privacy-conscious contact page
+- Homepage positioning for infrastructure, systems, platform operations, operational security, and self-hosted infrastructure roles
+- Sanitized infrastructure lab model
+- Operational project summaries
+- Operational notes about logging, restore testing, service exposure, Docker boundaries, private access, and automation scope
+- Capabilities & Operations page
+- Contact page with professional profile links
 
 ## Privacy And Security
 
-This project intentionally avoids exposing real service URLs, subdomains, IP addresses, email addresses, phone numbers, internal hostnames, credentials, logs, or private operational details.
+This project avoids exposing real service URLs, subdomains, IP addresses, email addresses, phone numbers, private hostnames, credentials, raw logs, file paths, or private operational details.
 
 Public examples use sanitized values such as:
 
 - `service.example`
-- `admin.internal`
-- `automation.internal`
-- `monitoring.internal`
-- `private`
-- `minimized`
+- `private-access`
+- `admin-workflow`
+- `monitoring-workflow`
+- `automation-workflow`
 - `Canada-based`
 
 ## Local Development
@@ -71,30 +69,6 @@ Output directory: dist
 ```
 
 No backend, analytics, database, or server runtime is required.
-
-## Project Structure
-
-```text
-src/
-├── components/
-│   ├── ArchitectureDiagram.astro
-│   ├── Footer.astro
-│   ├── Navbar.astro
-│   ├── ProjectCard.astro
-│   ├── SectionHeader.astro
-│   └── TechBadge.astro
-├── layouts/
-│   └── Layout.astro
-├── pages/
-│   ├── contact.astro
-│   ├── index.astro
-│   ├── infrastructure-lab.astro
-│   ├── projects.astro
-│   ├── resume.astro
-│   └── security-notes.astro
-└── styles/
-    └── global.css
-```
 
 ## License
 
