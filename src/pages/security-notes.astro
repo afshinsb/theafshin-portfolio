@@ -2,52 +2,125 @@
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const notes = [
+const primaryNotes = [
   {
-    title: 'How I Minimize Public Exposure',
-    body: 'Start with private-by-default services, expose only what has a clear external purpose, and place public traffic behind managed edge controls.',
+    title: 'Production logs become data stores',
+    body: 'Logs often outlive the request that created them, get copied into dashboards, and become easier to search than the source system. I treat logging as a data-retention decision, not just an observability feature.',
+    detail: 'Useful logs identify failure mode, route, status, latency, and correlation ID. They do not need usernames, full paths, tokens, internal hostnames, or raw request bodies to be operationally valuable.',
+    example: `logging:
+  request_id: true
+  include_headers: false
+  include_body: false
+  redact:
+    - authorization
+    - cookie
+    - x-api-key`,
   },
   {
-    title: 'Why Admin Tools Should Stay Private',
-    body: 'Administrative interfaces are high-value targets. They belong behind private access workflows, not direct public routes.',
+    title: 'Backups are only useful after a restore works',
+    body: 'A backup job can succeed for months while the restore path quietly breaks. The operational question is not whether files exist somewhere else; it is whether a service can be rebuilt from them under pressure.',
+    detail: 'For infrastructure services, I care about config, mounted data, version assumptions, DNS/proxy state, and the order needed to bring dependencies back online.',
+    example: `restore_test:
+  target: isolated-host
+  source: latest-snapshot
+  verify:
+    - service starts
+    - healthcheck passes
+    - sample data readable
+    - rollback notes current`,
   },
   {
-    title: 'Docker Secrets and Environment Hygiene',
-    body: 'Secrets should not appear in repos, terminal examples, screenshots, logs, or shared configuration snippets.',
+    title: 'Every public route adds operations work',
+    body: 'Public exposure is not just a firewall choice. Once a route is internet-facing, it needs patch attention, rate-limit behavior, logs that can be trusted, origin hiding, alerting, and an answer for what happens when the dependency behind it fails.',
+    detail: 'The simpler pattern is to expose only the service paths that need public users and keep administration, metrics, queues, and maintenance tooling on private access paths.',
+    example: `routes:
+  public:
+    - service.example
+  private:
+    - admin.internal
+    - metrics.internal
+    - automation.internal`,
+  },
+];
+
+const compactNotes = [
+  {
+    title: 'Private administration has a convenience cost',
+    body: 'VPN or identity-gated access adds friction, especially from new devices or during incidents. That cost is usually acceptable, but it should be designed for: documented break-glass access, device enrollment, and a known path when DNS or the proxy is unhealthy.',
   },
   {
-    title: 'Backup Strategy: Production Is Not Backup',
-    body: 'Running data is not the same as recoverable data. A useful backup strategy includes restore testing and rollback notes.',
+    title: 'Docker networking creates trust boundaries',
+    body: 'A Compose file can accidentally flatten trust. Putting a reverse proxy, database, queue, and admin UI on the same broad network makes lateral movement and misrouting easier. I prefer small networks based on who actually needs to speak to whom.',
   },
   {
-    title: 'Logging Without Leaking Sensitive Data',
-    body: 'Logs should preserve operational signals while excluding tokens, usernames, internal paths, service URLs, and private identifiers.',
+    title: 'Reverse proxies need boring rules',
+    body: 'Clever proxy routing is hard to debug during an outage. Explicit hostnames, narrow path rules, predictable headers, and conservative defaults make it easier to reason about what is reachable and what identity context reached it.',
   },
+  {
+    title: 'Automation should have a blast radius',
+    body: 'Automation removes repetitive work, but it also repeats mistakes very quickly. I like automation that has scoped credentials, idempotent behavior, dry-run output where possible, and logs that explain decisions without exposing sensitive inputs.',
+  },
+  {
+    title: 'Infrastructure drift is a security issue',
+    body: 'The dangerous change is often the one made quickly and never written down: a temporary port, a widened volume mount, a manual container flag, a skipped update. Drift makes the next incident harder because nobody is debugging the system they think exists.',
+  },
+  {
+    title: 'Simple systems fail more clearly',
+    body: 'A small number of obvious components is easier to secure than a sophisticated stack nobody can fully reconstruct. Simplicity improves reviewability, rollback planning, and confidence that monitoring is watching the right failure points.',
+  },
+];
+
+const checklist = [
+  'Can this service be rebuilt from documented config and recovery notes?',
+  'Does the reverse proxy expose only the intended hostname and path?',
+  'Can monitoring explain health without storing sensitive payloads?',
+  'Is the admin path still usable if the public route is down?',
+  'Are rollback steps written for the current version, not last month\'s layout?',
 ];
 ---
 
 <Layout
   title="Security Notes | Afshin Saberi"
-  description="Practical security notes about minimizing public exposure, private admin tools, environment hygiene, backups, and safe logging."
+  description="Operational notes about service exposure, logging, restore testing, Docker boundaries, private access, and constrained automation."
 >
-  <section class="py-10">
+  <section class="min-w-0 py-10">
     <SectionHeader
-      eyebrow="Notes"
-      title="Security Notes"
-      description="Short practical notes about secure operations, privacy-preserving documentation, and infrastructure risk reduction."
+      eyebrow="Operations"
+      title="Operational Security Notes"
+      description="Notes about the places where reliability and exposure reduction meet: logs, restore paths, proxy rules, Docker boundaries, private access, and automation scope."
     />
-    <div class="grid gap-4 md:grid-cols-2">
+
+    <div class="grid min-w-0 gap-5 lg:grid-cols-3">
       {
-        notes.map((note) => (
-          <article class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+        primaryNotes.map((note) => (
+          <article class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
             <h2 class="text-lg font-semibold text-[var(--text-strong)]">{note.title}</h2>
             <p class="mt-3 text-sm leading-7 text-[var(--text-soft)]">{note.body}</p>
-            <div class="mt-5 rounded-md border border-[color:var(--terminal-border)] bg-[var(--surface-terminal-soft)] p-3 font-mono text-xs text-[var(--terminal-text)]">
-              sanitized_example: service.example
-            </div>
+            <p class="mt-4 text-sm leading-7 text-[var(--text-muted)]">{note.detail}</p>
+            <pre class="mt-5 max-w-full overflow-x-hidden whitespace-pre-wrap break-words rounded-md border border-[color:var(--terminal-border)] bg-[var(--surface-terminal-soft)] p-3 text-xs leading-6 text-[var(--terminal-text)] sm:overflow-x-auto"><code>{note.example}</code></pre>
           </article>
         ))
       }
+    </div>
+
+    <div class="mt-6 grid min-w-0 gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+      <div class="grid min-w-0 gap-4 md:grid-cols-2">
+        {
+          compactNotes.map((note) => (
+            <article class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-5">
+              <h2 class="text-base font-semibold text-[var(--text-strong)]">{note.title}</h2>
+              <p class="mt-3 text-sm leading-7 text-[var(--text-soft)]">{note.body}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <aside class="rounded-lg border border-[color:var(--accent-border)] bg-[var(--accent-soft)] p-6">
+        <h2 class="text-lg font-semibold text-[var(--text-strong)]">Operational review questions</h2>
+        <ul class="mt-5 space-y-3 text-sm leading-7 text-[var(--text-soft)]">
+          {checklist.map((item) => <li class="border-l border-[color:var(--accent-border-hover)] pl-4">{item}</li>)}
+        </ul>
+      </aside>
     </div>
   </section>
 </Layout>

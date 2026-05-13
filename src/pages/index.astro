@@ -5,68 +5,68 @@ import TechBadge from '../components/TechBadge.astro';
 
 const highlights = [
   {
-    title: 'Self-Hosted Infrastructure',
-    body: 'Linux-first service operations with reverse proxying, Docker networks, access policy boundaries, and clear service ownership.',
+    title: 'Service Operation',
+    body: 'Linux services and Docker workloads with clear ownership of ingress, storage, health checks, and restart behavior.',
   },
   {
-    title: 'Automation Platform',
-    body: 'Workflow design for repeatable operations, subtitle processing, task orchestration, and controlled integrations using sanitized endpoints.',
+    title: 'Exposure Control',
+    body: 'Public routes are treated as operational commitments: DNS, tunnel/proxy behavior, logs, access boundaries, and failure handling all matter.',
   },
   {
-    title: 'Security-Focused Operations',
-    body: 'Public exposure minimization, private admin access, environment hygiene, backup planning, and log handling that avoids sensitive leakage.',
+    title: 'Recovery Thinking',
+    body: 'Backups, restore notes, rollback steps, and change documentation are part of the operating model, not afterthoughts.',
   },
 ];
 
 const terminalLines = [
   'identity: Afshin Saberi',
-  'role: Infrastructure / Systems / Security Engineer',
+  'focus: Linux services, Docker, access boundaries',
   'region: Canada-based',
-  'public_endpoint: service.example',
-  'admin_access: admin.internal',
+  'public_route: service.example',
+  'admin_route: private-access',
 ];
 ---
 
-<Layout title="Afshin Saberi | Infrastructure Lab & Technical Portfolio">
-  <section class="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-16">
-    <div>
-      <p class="mb-4 text-sm font-semibold text-[var(--accent-strong)]">Infrastructure Lab & Technical Portfolio</p>
-      <h1 class="text-5xl font-semibold tracking-normal text-[var(--text-strong)] sm:text-7xl">Afshin Saberi</h1>
-      <p class="mt-4 text-2xl text-[var(--text)]">Infrastructure / Systems / Security Engineer</p>
+<Layout title="Afshin Saberi | Infrastructure & Systems Operations">
+  <section class="grid min-w-0 gap-8 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-16">
+    <div class="min-w-0">
+      <p class="mb-4 text-sm font-semibold text-[var(--accent-strong)]">Infrastructure & Systems Operations</p>
+      <h1 class="max-w-full text-4xl font-semibold tracking-normal text-[var(--text-strong)] sm:text-7xl">Afshin Saberi</h1>
+      <p class="mt-4 max-w-full text-xl leading-8 text-[var(--text)] sm:text-2xl">Infrastructure / Systems / Security Engineer</p>
       <p class="mt-6 max-w-3xl text-lg leading-8 text-[var(--text-soft)]">
-        I design and operate Linux-based infrastructure, Dockerized services, secure remote access workflows,
-        automation tools, and self-hosted platforms.
+        I operate Linux-based services, Dockerized workloads, reverse-proxied ingress, private access paths,
+        and automation that is constrained enough to be maintainable.
       </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="rounded-md bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--button-text)] transition hover:bg-[var(--accent-strong)]" href="/infrastructure-lab">View Infrastructure Lab</a>
-        <a class="rounded-md border border-[color:var(--border-strong)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)]" href="/projects">View Projects</a>
-        <a class="rounded-md border border-[color:var(--border-strong)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] transition hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)]" href="/resume">Resume</a>
+      <div class="mt-8 flex min-w-0 flex-col gap-3 min-[430px]:flex-row min-[430px]:flex-wrap">
+        <a class="inline-flex w-full max-w-full justify-center rounded-md bg-[var(--accent)] px-4 py-3 text-center text-sm font-semibold text-[var(--button-text)] transition hover:bg-[var(--accent-strong)] min-[430px]:w-auto" href="/infrastructure-lab">View Infrastructure Lab</a>
+        <a class="inline-flex w-full max-w-full justify-center rounded-md border border-[color:var(--border-strong)] px-4 py-3 text-center text-sm font-semibold text-[var(--text-strong)] transition hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)] min-[430px]:w-auto" href="/projects">View Projects</a>
+        <a class="inline-flex w-full max-w-full justify-center rounded-md border border-[color:var(--border-strong)] px-4 py-3 text-center text-sm font-semibold text-[var(--text-strong)] transition hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)] min-[430px]:w-auto" href="/resume">Resume</a>
       </div>
-      <div class="mt-8 flex flex-wrap gap-2">
-        {['Linux', 'Docker', 'Networking', 'VPN', 'Cloudflare', 'Security Operations'].map((skill) => <TechBadge label={skill} />)}
+      <div class="mt-8 flex min-w-0 flex-wrap gap-2">
+        {['Linux', 'Docker', 'Reverse Proxy', 'Cloudflare Tunnel', 'VPN Access', 'Backups'].map((skill) => <TechBadge label={skill} />)}
       </div>
     </div>
 
-    <div class="rounded-lg border border-[color:var(--terminal-border)] bg-[var(--surface-terminal)] p-5 shadow-2xl shadow-black/30">
+    <div class="min-w-0 max-w-full rounded-lg border border-[color:var(--terminal-border)] bg-[var(--surface-terminal)] p-4 shadow-2xl shadow-black/30 sm:p-5">
       <div class="mb-4 flex gap-2">
         <span class="h-3 w-3 rounded-full bg-red-400"></span>
         <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
         <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
       </div>
-      <pre class="overflow-x-auto text-sm leading-7 text-[var(--terminal-text)]"><code>{terminalLines.map((line) => `> ${line}`).join('\n')}</code></pre>
+      <pre class="max-w-full overflow-x-hidden whitespace-pre-wrap break-words text-xs leading-6 text-[var(--terminal-text)] sm:overflow-x-auto sm:text-sm sm:leading-7"><code>{terminalLines.map((line) => `> ${line}`).join('\n')}</code></pre>
     </div>
   </section>
 
-  <section class="py-10">
+  <section class="min-w-0 py-10">
     <SectionHeader
       eyebrow="Highlights"
-      title="Operational work with security boundaries"
-      description="The site focuses on infrastructure thinking, sanitized technical communication, and production-minded operations."
+      title="Practical infrastructure work"
+      description="The emphasis here is on operating services cleanly: knowing what is exposed, what depends on what, how changes roll back, and what evidence is useful when something fails."
     />
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid min-w-0 gap-4 md:grid-cols-3">
       {
         highlights.map((highlight) => (
-          <article class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+          <article class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
             <h2 class="text-lg font-semibold text-[var(--text-strong)]">{highlight.title}</h2>
             <p class="mt-3 text-sm leading-7 text-[var(--text-soft)]">{highlight.body}</p>
           </article>

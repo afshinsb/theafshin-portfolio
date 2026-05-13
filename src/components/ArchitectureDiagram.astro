@@ -1,25 +1,25 @@
 ---
 const flow = [
   'Internet',
-  'Cloudflare DNS / WAF / Access',
+  'Cloudflare DNS / Tunnel',
   'Reverse Proxy',
-  'Docker Network',
+  'Docker Service Network',
 ];
 
 const groups = [
-  'Automation Services',
-  'Media Services',
-  'Storage Services',
-  'Monitoring',
-  'Internal Admin Tools',
+  'Public service routes',
+  'Private admin tools',
+  'Automation jobs',
+  'Storage-backed services',
+  'Monitoring signals',
 ];
 ---
 
-<section class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-5 shadow-2xl shadow-black/20" aria-label="Sanitized infrastructure architecture diagram">
-  <div class="grid gap-3 lg:grid-cols-4">
+<section class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-5 shadow-2xl shadow-black/20" aria-label="Sanitized infrastructure architecture diagram">
+  <div class="grid min-w-0 gap-3 lg:grid-cols-4">
     {
       flow.map((node, index) => (
-        <div class="relative rounded-lg border border-[color:var(--accent-border)] bg-[var(--accent-soft)] p-4">
+        <div class="relative min-w-0 rounded-lg border border-[color:var(--accent-border)] bg-[var(--accent-soft)] p-4">
           <p class="text-sm font-semibold text-[var(--accent)]">{node}</p>
           {index < flow.length - 1 && <span class="absolute -right-2 top-1/2 hidden text-[var(--accent-strong)] lg:block">-&gt;</span>}
         </div>
@@ -28,11 +28,11 @@ const groups = [
   </div>
 
   <div class="mt-5 rounded-lg border border-[color:var(--border)] bg-[var(--surface-strong)] p-4">
-    <p class="mb-3 text-sm font-semibold text-[var(--text)]">Service Groups</p>
-    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <p class="mb-3 text-sm font-semibold text-[var(--text)]">Operational boundaries</p>
+    <div class="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {
         groups.map((group) => (
-          <div class="rounded-md border border-[color:var(--border)] bg-[var(--surface-muted)] p-3 text-sm text-[var(--text-soft)]">
+          <div class="min-w-0 rounded-md border border-[color:var(--border)] bg-[var(--surface-muted)] p-3 text-sm text-[var(--text-soft)]">
             {group}
           </div>
         ))
@@ -40,9 +40,9 @@ const groups = [
     </div>
   </div>
 
-  <pre class="mt-5 overflow-x-auto rounded-lg border border-[color:var(--terminal-border)] bg-[var(--surface-terminal)] p-4 text-xs leading-6 text-[var(--terminal-text)]"><code>$ curl https://service.example
-status: proxied
-access: policy-gated
-origin: hidden
-admin: admin.internal</code></pre>
+  <pre class="mt-5 max-w-full overflow-x-hidden whitespace-pre-wrap break-words rounded-lg border border-[color:var(--terminal-border)] bg-[var(--surface-terminal)] p-4 text-xs leading-6 text-[var(--terminal-text)] sm:overflow-x-auto"><code>ingress:
+  public: service.example
+  origin: tunnel-only
+  admin: admin.internal
+  logs: request_id, status, latency</code></pre>
 </section>
