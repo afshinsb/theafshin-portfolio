@@ -15,24 +15,24 @@ const groups = [
 ];
 ---
 
-<section class="rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-2xl shadow-black/20" aria-label="Sanitized infrastructure architecture diagram">
+<section class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-5 shadow-2xl shadow-black/20" aria-label="Sanitized infrastructure architecture diagram">
   <div class="grid gap-3 lg:grid-cols-4">
     {
       flow.map((node, index) => (
-        <div class="relative rounded-lg border border-cyan-300/20 bg-cyan-300/10 p-4">
-          <p class="text-sm font-semibold text-cyan-100">{node}</p>
-          {index < flow.length - 1 && <span class="absolute -right-2 top-1/2 hidden text-cyan-300 lg:block">-&gt;</span>}
+        <div class="relative rounded-lg border border-[color:var(--accent-border)] bg-[var(--accent-soft)] p-4">
+          <p class="text-sm font-semibold text-[var(--accent)]">{node}</p>
+          {index < flow.length - 1 && <span class="absolute -right-2 top-1/2 hidden text-[var(--accent-strong)] lg:block">-&gt;</span>}
         </div>
       ))
     }
   </div>
 
-  <div class="mt-5 rounded-lg border border-white/10 bg-black/30 p-4">
-    <p class="mb-3 text-sm font-semibold text-slate-200">Service Groups</p>
+  <div class="mt-5 rounded-lg border border-[color:var(--border)] bg-[var(--surface-strong)] p-4">
+    <p class="mb-3 text-sm font-semibold text-[var(--text)]">Service Groups</p>
     <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {
         groups.map((group) => (
-          <div class="rounded-md border border-white/10 bg-slate-900/80 p-3 text-sm text-slate-300">
+          <div class="rounded-md border border-[color:var(--border)] bg-[var(--surface-muted)] p-3 text-sm text-[var(--text-soft)]">
             {group}
           </div>
         ))
@@ -40,7 +40,7 @@ const groups = [
     </div>
   </div>
 
-  <pre class="mt-5 overflow-x-auto rounded-lg border border-emerald-300/20 bg-black/50 p-4 text-xs leading-6 text-emerald-200"><code>$ curl https://service.example
+  <pre class="mt-5 overflow-x-auto rounded-lg border border-[color:var(--terminal-border)] bg-[var(--surface-terminal)] p-4 text-xs leading-6 text-[var(--terminal-text)]"><code>$ curl https://service.example
 status: proxied
 access: policy-gated
 origin: hidden

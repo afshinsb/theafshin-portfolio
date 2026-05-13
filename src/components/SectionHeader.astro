@@ -3,7 +3,7 @@ const { eyebrow, title, description } = Astro.props;
 ---
 
 <div class="mb-8 max-w-3xl">
-  {eyebrow && <p class="mb-3 text-sm font-semibold text-cyan-300">{eyebrow}</p>}
-  <h1 class="text-3xl font-semibold tracking-normal text-white sm:text-5xl">{title}</h1>
-  {description && <p class="mt-4 text-base leading-8 text-slate-300 sm:text-lg">{description}</p>}
+  {eyebrow && <p class="mb-3 text-sm font-semibold text-[var(--accent-strong)]">{eyebrow}</p>}
+  <h1 class="text-3xl font-semibold tracking-normal text-[var(--text-strong)] sm:text-5xl">{title}</h1>
+  {description && <p class="mt-4 text-base leading-8 text-[var(--text-soft)] sm:text-lg">{description}</p>}
 </div>
