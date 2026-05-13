@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout title="Contact | Afshin Saberi">
+  <section class="py-10">
+    <SectionHeader
+      eyebrow="Connect"
+      title="Contact"
+      description="For professional inquiries, please connect with me on LinkedIn."
+    />
+    <div class="max-w-2xl rounded-lg border border-white/10 bg-slate-950/70 p-6">
+      <p class="text-slate-300">
+        I keep direct contact details private on this static site. Use professional profiles for verified outreach.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="rounded-md bg-cyan-300 px-4 py-3 text-sm font-semibold text-slate-950" href="#" aria-label="LinkedIn profile placeholder">LinkedIn</a>
+        <a class="rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:border-cyan-300/50 hover:bg-white/5" href="#" aria-label="GitHub profile placeholder">GitHub</a>
+      </div>
+    </div>
+  </section>
+</Layout>
