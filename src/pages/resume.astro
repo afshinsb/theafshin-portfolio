@@ -3,73 +3,101 @@ import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import TechBadge from '../components/TechBadge.astro';
 
-const skills = [
-  'Linux',
-  'Docker',
-  'Reverse Proxying',
-  'DNS Troubleshooting',
-  'VPN / Private Access',
-  'Python',
-  'PowerShell',
+const focusAreas = [
+  'Linux Service Operations',
+  'Docker Workloads',
+  'Reverse Proxy Routing',
   'Cloudflare Tunnel',
+  'VPN / Private Access',
+  'DNS Troubleshooting',
+  'Python Automation',
+  'PowerShell Automation',
   'Backups / Restores',
   'Operational Logging',
 ];
 
-const resumeSections = [
+const capabilitySections = [
   {
-    title: 'Infrastructure Operations',
+    title: 'Infrastructure',
     items: [
-      'Linux service deployment, maintenance, package updates, and service health checks',
-      'Dockerized workload operation with deliberate networks, volumes, and restart behavior',
-      'Reverse proxy and tunnel-based ingress for selected public services',
+      'Linux services, updates, health checks',
+      'Docker workloads, volumes, networks',
+      'Reverse proxy and tunnel-based ingress',
     ],
   },
   {
-    title: 'Access & Exposure Control',
+    title: 'Access & Exposure',
     items: [
-      'Private administration workflows using VPN-style access and internal hostnames',
-      'DNS, firewall, and proxy troubleshooting for reachable and intentionally unreachable services',
-      'Logging practices that preserve operational signal without publishing sensitive environment details',
+      'Selective public routes',
+      'Private administration workflows',
+      'DNS and access-rule troubleshooting',
     ],
   },
   {
-    title: 'Automation & Reliability',
+    title: 'Troubleshooting',
     items: [
-      'Python and PowerShell automation for repeatable file, service, and maintenance workflows',
-      'Backup, restore, snapshot, and rollback notes for stateful services',
-      'Monitoring focused on service health, storage pressure, latency, and proxy reachability',
+      'Isolate DNS, proxy, service, storage layers',
+      'Use logs for signal, not noise',
+      'Prefer small reversible changes',
+    ],
+  },
+  {
+    title: 'Automation',
+    items: [
+      'Python and PowerShell workflows',
+      'Predictable inputs and outputs',
+      'Readable failure behavior',
+    ],
+  },
+  {
+    title: 'Visibility',
+    items: [
+      'Service health and proxy reachability',
+      'Storage pressure and latency signals',
+      'Logs that support diagnosis',
+    ],
+  },
+  {
+    title: 'Recovery',
+    items: [
+      'Restore inputs and service order',
+      'Backup verification',
+      'Rollback notes for changes',
     ],
   },
 ];
 ---
 
 <Layout
-  title="Resume | Afshin Saberi"
-  description="Canada-based Infrastructure, Systems, and Security Engineer focused on Linux service operations, Docker workloads, private access, automation, and restore planning."
+  title="Capabilities & Operations | Afshin Saberi"
+  description="Infrastructure and systems capabilities focused on Linux service operations, Docker workloads, private access, troubleshooting, automation, monitoring, and restore planning."
 >
   <section class="min-w-0 py-10">
     <SectionHeader
-      eyebrow="Experience"
-      title="Resume"
-      description="Hands-on infrastructure and systems work focused on operating services, reducing unnecessary exposure, automating carefully, and keeping recovery paths understandable."
+      eyebrow="Capabilities"
+      title="Capabilities & Operations"
+      description="A recruiter-friendly summary of the infrastructure work I can discuss in more detail."
     />
     <div class="grid min-w-0 gap-6 lg:grid-cols-[0.7fr_1.3fr]">
       <aside class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
         <h2 class="text-xl font-semibold text-[var(--text-strong)]">Afshin Saberi</h2>
         <p class="mt-2 text-[var(--text-soft)]">Infrastructure / Systems / Security Engineer</p>
         <p class="mt-2 text-sm text-[var(--accent)]">Canada-based</p>
+        <p class="mt-6 text-sm leading-6 text-[var(--text-soft)]">
+          Hands-on infrastructure work across Linux services, Docker workloads, private access,
+          troubleshooting, automation, monitoring, and restore planning.
+        </p>
         <div class="mt-6 flex flex-wrap gap-2">
-          {skills.map((skill) => <TechBadge label={skill} />)}
+          {focusAreas.map((skill) => <TechBadge label={skill} />)}
         </div>
       </aside>
 
-      <div class="min-w-0 space-y-4">
+      <div class="grid min-w-0 gap-4 md:grid-cols-2">
         {
-          resumeSections.map((section) => (
+          capabilitySections.map((section) => (
             <section class="min-w-0 rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
               <h2 class="text-lg font-semibold text-[var(--text-strong)]">{section.title}</h2>
-              <ul class="mt-4 space-y-3 text-sm leading-7 text-[var(--text-soft)]">
+              <ul class="mt-4 space-y-2 text-sm leading-6 text-[var(--text-soft)]">
                 {section.items.map((item) => <li class="border-l border-[color:var(--accent-border)] pl-4">{item}</li>)}
               </ul>
             </section>

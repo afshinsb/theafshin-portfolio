@@ -3,8 +3,8 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/infrastructure-lab', label: 'Infrastructure Lab' },
   { href: '/projects', label: 'Projects' },
-  { href: '/security-notes', label: 'Security Notes' },
-  { href: '/resume', label: 'Resume' },
+  { href: '/security-notes', label: 'Operational Notes' },
+  { href: '/resume', label: 'Capabilities' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
@@ -138,7 +138,11 @@ const links = [
       themeSelect.value = initialTheme;
       themeSelect.addEventListener('change', () => {
         document.documentElement.dataset.theme = themeSelect.value;
-        localStorage.setItem('theme', themeSelect.value);
+        try {
+          localStorage.setItem('theme', themeSelect.value);
+        } catch {
+          // Theme still applies for the current page even if storage is unavailable.
+        }
         themeSelects.forEach((select) => {
           select.value = themeSelect.value;
         });
