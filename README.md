@@ -1,28 +1,49 @@
 # Afshin Saberi - Infrastructure & Systems Operations Portfolio
 
-A static Astro portfolio focused on Linux service operations, Docker workloads, reverse proxy routing, private access workflows, automation, monitoring, and restore-aware infrastructure practice.
+A static Astro portfolio for presenting hands-on infrastructure, systems, and operational security work in a privacy-safe way.
 
-## Tech Stack
+The site focuses on Linux service operations, Docker workloads, reverse proxy routing, Cloudflare-style exposure patterns, private access workflows, automation, monitoring, and restore-aware infrastructure practice.
+
+## Stack
 
 - Astro
 - Tailwind CSS
 - TypeScript
-- Cloudflare Pages
+- Cloudflare static deployment
 
-## Site Content
+## Content
 
-- Homepage positioning for infrastructure, systems, platform operations, operational security, and self-hosted infrastructure roles
-- Sanitized infrastructure lab model
-- Operational project summaries
-- Operational notes about logging, restore testing, service exposure, Docker boundaries, private access, and automation scope
-- Capabilities & Operations page
+- Homepage with concise infrastructure positioning
+- Infrastructure Lab with sanitized operating model examples
+- Projects page with representative operational work areas
+- Operational Notes covering logging, restore testing, public exposure, Docker boundaries, private access, and automation scope
+- Capabilities & Operations page for recruiter-friendly skill review
 - Contact page with professional profile links
 
-## Privacy And Security
+## Design Goals
 
-This project avoids exposing real service URLs, subdomains, IP addresses, email addresses, phone numbers, private hostnames, credentials, raw logs, file paths, or private operational details.
+- Minimal, readable, and recruiter-friendly
+- Practical infrastructure language instead of buzzwords
+- No fake metrics, companies, uptime, audits, or certifications
+- Sanitized examples only
+- Static, lightweight, and easy to deploy
 
-Public examples use sanitized values such as:
+## Privacy And Safety
+
+This project intentionally avoids exposing real infrastructure details, including:
+
+- service URLs
+- subdomains
+- IP addresses
+- email addresses
+- phone numbers
+- private hostnames
+- credentials
+- raw logs
+- local file paths
+- service inventory
+
+Public examples use safe placeholders such as:
 
 - `service.example`
 - `private-access`
@@ -39,7 +60,7 @@ Install dependencies:
 npm install
 ```
 
-Start the local development server:
+Start the development server:
 
 ```sh
 npm run dev
@@ -59,16 +80,44 @@ npm run preview
 
 ## Deployment
 
-This site is static and Cloudflare Pages friendly.
+The project builds to static files in `dist/`.
 
-Cloudflare Pages settings:
+Typical Cloudflare Pages settings:
 
 ```text
 Build command: npm run build
 Output directory: dist
 ```
 
-No backend, analytics, database, or server runtime is required.
+Before public indexing, update production URL placeholders in Astro config, `robots.txt`, and `sitemap.xml` to match the final domain.
+
+## Project Structure
+
+```text
+src/
+  components/
+    ArchitectureDiagram.astro
+    Footer.astro
+    Navbar.astro
+    ProjectCard.astro
+    SectionHeader.astro
+    TechBadge.astro
+  layouts/
+    Layout.astro
+  pages/
+    contact.astro
+    index.astro
+    infrastructure-lab.astro
+    projects.astro
+    resume.astro
+    security-notes.astro
+  styles/
+    global.css
+```
+
+## Runtime
+
+No backend, database, analytics, tracker, or server runtime is required.
 
 ## License
 
