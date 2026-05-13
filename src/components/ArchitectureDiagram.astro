@@ -1,0 +1,48 @@
+---
+const flow = [
+  'Internet',
+  'Cloudflare DNS / WAF / Access',
+  'Reverse Proxy',
+  'Docker Network',
+];
+
+const groups = [
+  'Automation Services',
+  'Media Services',
+  'Storage Services',
+  'Monitoring',
+  'Internal Admin Tools',
+];
+---
+
+<section class="rounded-lg border border-white/10 bg-slate-950/70 p-5 shadow-2xl shadow-black/20" aria-label="Sanitized infrastructure architecture diagram">
+  <div class="grid gap-3 lg:grid-cols-4">
+    {
+      flow.map((node, index) => (
+        <div class="relative rounded-lg border border-cyan-300/20 bg-cyan-300/10 p-4">
+          <p class="text-sm font-semibold text-cyan-100">{node}</p>
+          {index < flow.length - 1 && <span class="absolute -right-2 top-1/2 hidden text-cyan-300 lg:block">-&gt;</span>}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-5 rounded-lg border border-white/10 bg-black/30 p-4">
+    <p class="mb-3 text-sm font-semibold text-slate-200">Service Groups</p>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {
+        groups.map((group) => (
+          <div class="rounded-md border border-white/10 bg-slate-900/80 p-3 text-sm text-slate-300">
+            {group}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <pre class="mt-5 overflow-x-auto rounded-lg border border-emerald-300/20 bg-black/50 p-4 text-xs leading-6 text-emerald-200"><code>$ curl https://service.example
+status: proxied
+access: policy-gated
+origin: hidden
+admin: admin.internal</code></pre>
+</section>

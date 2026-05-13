@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const projects = [
+  {
+    title: 'Self-Hosted Infrastructure Platform',
+    problem: 'Multiple services need reliable operation without exposing private administration surfaces.',
+    solution: 'Designed a layered model with edge protection, reverse proxy routing, Docker isolation, monitoring, and documented restore paths.',
+    technologies: ['Linux', 'Docker', 'Cloudflare', 'Reverse Proxy', 'ZFS'],
+    security: 'Keeps admin tools private, uses sanitized public service names, and separates services by access pattern.',
+    demonstrates: 'Systems design, service ownership, operational discipline, and risk-aware infrastructure communication.',
+  },
+  {
+    title: 'Subtitle Translation Automation Platform',
+    problem: 'Manual subtitle preparation and translation workflows are repetitive and error-prone.',
+    solution: 'Modeled an automation flow that receives controlled inputs, processes text assets, and produces repeatable outputs.',
+    technologies: ['Python', 'Automation', 'APIs', 'Docker'],
+    security: 'Uses placeholder service.example endpoints and avoids storing secrets, tokens, or file paths in visible logs.',
+    demonstrates: 'Workflow design, automation thinking, integration hygiene, and practical scripting ability.',
+  },
+  {
+    title: 'Media & Automation Stack',
+    problem: 'Media workflows require coordination across storage, processing, metadata, and scheduled automation.',
+    solution: 'Grouped services by responsibility and isolated supporting tools from public access.',
+    technologies: ['Docker', 'Storage', 'Networking', 'Monitoring'],
+    security: 'Separates internal tooling from public routes and avoids exposing service URLs or administrative ports.',
+    demonstrates: 'Operational architecture, Docker service planning, and clean documentation of complex systems.',
+  },
+  {
+    title: 'Secure Remote Access Design',
+    problem: 'Remote administration must be convenient without making internal dashboards public.',
+    solution: 'Designed private access patterns using VPN-style connectivity, access policies, and internal host aliases.',
+    technologies: ['Tailscale', 'VPN', 'Firewalls', 'Cloudflare Access'],
+    security: 'Administrative paths remain private with examples limited to admin.internal and automation.internal.',
+    demonstrates: 'Defense-in-depth thinking, identity-aware access design, and exposure reduction.',
+  },
+  {
+    title: 'Backup & Rollback Planning',
+    problem: 'Production data and configuration can be lost or corrupted without tested rollback plans.',
+    solution: 'Outlined snapshot, backup, restore, and change rollback practices for service and storage recovery.',
+    technologies: ['ZFS', 'Backups', 'Linux', 'Documentation'],
+    security: 'Plans exclude private paths, usernames, logs, and credentials while preserving operational clarity.',
+    demonstrates: 'Reliability engineering, incident readiness, and practical production thinking.',
+  },
+];
+---
+
+<Layout title="Projects | Afshin Saberi">
+  <section class="py-10">
+    <SectionHeader
+      eyebrow="Work"
+      title="Projects"
+      description="Case-study style summaries that explain the problem, solution, tooling, security considerations, and professional value without exposing sensitive infrastructure details."
+    />
+    <div class="grid gap-5 lg:grid-cols-2">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
+</Layout>

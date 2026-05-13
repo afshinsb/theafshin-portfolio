@@ -1,17 +1,77 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TechBadge from '../components/TechBadge.astro';
 
+const highlights = [
+  {
+    title: 'Self-Hosted Infrastructure',
+    body: 'Linux-first service operations with reverse proxying, Docker networks, access policy boundaries, and clear service ownership.',
+  },
+  {
+    title: 'Automation Platform',
+    body: 'Workflow design for repeatable operations, subtitle processing, task orchestration, and controlled integrations using sanitized endpoints.',
+  },
+  {
+    title: 'Security-Focused Operations',
+    body: 'Public exposure minimization, private admin access, environment hygiene, backup planning, and log handling that avoids sensitive leakage.',
+  },
+];
+
+const terminalLines = [
+  'identity: Afshin Saberi',
+  'role: Infrastructure / Systems / Security Engineer',
+  'region: Canada-based',
+  'public_endpoint: service.example',
+  'admin_access: admin.internal',
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Afshin Saberi | Infrastructure Lab & Technical Portfolio">
+  <section class="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-16">
+    <div>
+      <p class="mb-4 text-sm font-semibold text-cyan-300">Infrastructure Lab & Technical Portfolio</p>
+      <h1 class="text-5xl font-semibold tracking-normal text-white sm:text-7xl">Afshin Saberi</h1>
+      <p class="mt-4 text-2xl text-slate-200">Infrastructure / Systems / Security Engineer</p>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+        I design and operate Linux-based infrastructure, Dockerized services, secure remote access workflows,
+        automation tools, and self-hosted platforms.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="rounded-md bg-cyan-300 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200" href="/infrastructure-lab">View Infrastructure Lab</a>
+        <a class="rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white transition hover:border-cyan-300/50 hover:bg-white/5" href="/projects">View Projects</a>
+        <a class="rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white transition hover:border-cyan-300/50 hover:bg-white/5" href="/resume">Resume</a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2">
+        {['Linux', 'Docker', 'Networking', 'VPN', 'Cloudflare', 'Security Operations'].map((skill) => <TechBadge label={skill} />)}
+      </div>
+    </div>
+
+    <div class="rounded-lg border border-white/10 bg-slate-950/80 p-5 shadow-2xl shadow-black/30">
+      <div class="mb-4 flex gap-2">
+        <span class="h-3 w-3 rounded-full bg-red-400"></span>
+        <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
+        <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+      </div>
+      <pre class="overflow-x-auto text-sm leading-7 text-emerald-200"><code>{terminalLines.map((line) => `> ${line}`).join('\n')}</code></pre>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <SectionHeader
+      eyebrow="Highlights"
+      title="Operational work with security boundaries"
+      description="The site focuses on infrastructure thinking, sanitized technical communication, and production-minded operations."
+    />
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        highlights.map((highlight) => (
+          <article class="rounded-lg border border-white/10 bg-slate-950/70 p-6">
+            <h2 class="text-lg font-semibold text-white">{highlight.title}</h2>
+            <p class="mt-3 text-sm leading-7 text-slate-300">{highlight.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
