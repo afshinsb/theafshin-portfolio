@@ -6,7 +6,6 @@ Afshin Saberi - Infrastructure Lab & Technical Portfolio
 
 Role: Infrastructure / Systems / Security Engineer
 
-The site intentionally uses sanitized examples only. It does not publish email, phone number, exact location, internal hostnames, real service URLs, IP addresses, ports, private paths, logs, credentials, or screenshots with sensitive data.
 
 ## Local Development
 
