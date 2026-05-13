@@ -1,4 +1,13 @@
 ---
+interface Props {
+  title: string;
+  problem: string;
+  solution: string;
+  technologies: string[];
+  security: string;
+  demonstrates: string;
+}
+
 const {
   title,
   problem,
@@ -6,30 +15,30 @@ const {
   technologies = [],
   security,
   demonstrates,
-} = Astro.props;
+} = Astro.props as Props;
 ---
 
-<article class="rounded-lg border border-white/10 bg-slate-950/70 p-6 shadow-2xl shadow-black/20">
-  <h2 class="text-xl font-semibold text-white">{title}</h2>
+<article class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6 shadow-2xl shadow-black/20">
+  <h2 class="text-xl font-semibold text-[var(--text-strong)]">{title}</h2>
   <dl class="mt-5 space-y-4 text-sm leading-7">
     <div>
-      <dt class="font-semibold text-cyan-200">Problem</dt>
-      <dd class="text-slate-300">{problem}</dd>
+      <dt class="font-semibold text-[var(--accent)]">Problem</dt>
+      <dd class="text-[var(--text-soft)]">{problem}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-cyan-200">Solution</dt>
-      <dd class="text-slate-300">{solution}</dd>
+      <dt class="font-semibold text-[var(--accent)]">Solution</dt>
+      <dd class="text-[var(--text-soft)]">{solution}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-cyan-200">Security considerations</dt>
-      <dd class="text-slate-300">{security}</dd>
+      <dt class="font-semibold text-[var(--accent)]">Security considerations</dt>
+      <dd class="text-[var(--text-soft)]">{security}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-cyan-200">Professional signal</dt>
-      <dd class="text-slate-300">{demonstrates}</dd>
+      <dt class="font-semibold text-[var(--accent)]">Professional signal</dt>
+      <dd class="text-[var(--text-soft)]">{demonstrates}</dd>
     </div>
   </dl>
   <div class="mt-5 flex flex-wrap gap-2">
-    {technologies.map((technology) => <span class="rounded-md bg-white/5 px-2.5 py-1 text-xs text-slate-200">{technology}</span>)}
+    {technologies.map((technology) => <span class="rounded-md bg-[var(--surface-hover)] px-2.5 py-1 text-xs text-[var(--text)]">{technology}</span>)}
   </div>
 </article>

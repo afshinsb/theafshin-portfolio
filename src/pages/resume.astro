@@ -46,7 +46,10 @@ const resumeSections = [
 ];
 ---
 
-<Layout title="Resume | Afshin Saberi">
+<Layout
+  title="Resume | Afshin Saberi"
+  description="Canada-based Infrastructure, Systems, and Security Engineer resume focused on Linux, Docker, networking, automation, and security operations."
+>
   <section class="py-10">
     <SectionHeader
       eyebrow="Experience"
@@ -54,11 +57,10 @@ const resumeSections = [
       description="Canada-based Infrastructure / Systems / Security Engineer focused on reliable systems, secure access patterns, automation, and practical operations."
     />
     <div class="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
-      <aside class="rounded-lg border border-white/10 bg-slate-950/70 p-6">
-        <h2 class="text-xl font-semibold text-white">Afshin Saberi</h2>
-        <p class="mt-2 text-slate-300">Infrastructure / Systems / Security Engineer</p>
-        <p class="mt-2 text-sm text-cyan-200">Canada-based</p>
-        <a class="mt-6 inline-flex rounded-md bg-cyan-300 px-4 py-3 text-sm font-semibold text-slate-950" href="#" aria-label="Download Resume PDF placeholder">Download Resume PDF</a>
+      <aside class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+        <h2 class="text-xl font-semibold text-[var(--text-strong)]">Afshin Saberi</h2>
+        <p class="mt-2 text-[var(--text-soft)]">Infrastructure / Systems / Security Engineer</p>
+        <p class="mt-2 text-sm text-[var(--accent)]">Canada-based</p>
         <div class="mt-6 flex flex-wrap gap-2">
           {skills.map((skill) => <TechBadge label={skill} />)}
         </div>
@@ -67,10 +69,10 @@ const resumeSections = [
       <div class="space-y-4">
         {
           resumeSections.map((section) => (
-            <section class="rounded-lg border border-white/10 bg-slate-950/70 p-6">
-              <h2 class="text-lg font-semibold text-white">{section.title}</h2>
-              <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-300">
-                {section.items.map((item) => <li class="border-l border-cyan-300/30 pl-4">{item}</li>)}
+            <section class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+              <h2 class="text-lg font-semibold text-[var(--text-strong)]">{section.title}</h2>
+              <ul class="mt-4 space-y-3 text-sm leading-7 text-[var(--text-soft)]">
+                {section.items.map((item) => <li class="border-l border-[color:var(--accent-border)] pl-4">{item}</li>)}
               </ul>
             </section>
           ))

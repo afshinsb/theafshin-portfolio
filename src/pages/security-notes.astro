@@ -26,7 +26,10 @@ const notes = [
 ];
 ---
 
-<Layout title="Security Notes | Afshin Saberi">
+<Layout
+  title="Security Notes | Afshin Saberi"
+  description="Practical security notes about minimizing public exposure, private admin tools, environment hygiene, backups, and safe logging."
+>
   <section class="py-10">
     <SectionHeader
       eyebrow="Notes"
@@ -36,10 +39,10 @@ const notes = [
     <div class="grid gap-4 md:grid-cols-2">
       {
         notes.map((note) => (
-          <article class="rounded-lg border border-white/10 bg-slate-950/70 p-6">
-            <h2 class="text-lg font-semibold text-white">{note.title}</h2>
-            <p class="mt-3 text-sm leading-7 text-slate-300">{note.body}</p>
-            <div class="mt-5 rounded-md border border-emerald-300/20 bg-black/40 p-3 font-mono text-xs text-emerald-200">
+          <article class="rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+            <h2 class="text-lg font-semibold text-[var(--text-strong)]">{note.title}</h2>
+            <p class="mt-3 text-sm leading-7 text-[var(--text-soft)]">{note.body}</p>
+            <div class="mt-5 rounded-md border border-[color:var(--terminal-border)] bg-[var(--surface-terminal-soft)] p-3 font-mono text-xs text-[var(--terminal-text)]">
               sanitized_example: service.example
             </div>
           </article>

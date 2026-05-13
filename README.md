@@ -1,48 +1,101 @@
-# Afshin Saberi Portfolio
+# Afshin Saberi — Infrastructure Lab & Technical Portfolio
 
-Astro + Tailwind static portfolio for:
+A static technical portfolio showcasing infrastructure, systems, automation, and security-focused operations using sanitized public examples.
 
-Afshin Saberi - Infrastructure Lab & Technical Portfolio
+## Tech Stack
 
-Role: Infrastructure / Systems / Security Engineer
+- Astro
+- Tailwind CSS
+- TypeScript
+- Cloudflare Pages
 
+## Key Features
+
+- Responsive design
+- Theme switcher
+- Sanitized infrastructure architecture
+- Project case studies
+- Security notes
+- Resume page
+- Privacy-conscious contact page
+
+## Privacy And Security
+
+This project intentionally avoids exposing real service URLs, subdomains, IP addresses, email addresses, phone numbers, internal hostnames, credentials, logs, or private operational details.
+
+Public examples use sanitized values such as:
+
+- `service.example`
+- `admin.internal`
+- `automation.internal`
+- `monitoring.internal`
+- `private`
+- `minimized`
+- `Canada-based`
 
 ## Local Development
 
+Install dependencies:
+
 ```sh
 npm install
+```
+
+Start the local development server:
+
+```sh
 npm run dev
 ```
 
-The dev server prints its local URL in the terminal when it starts.
-
-## Build
+Build the static site:
 
 ```sh
 npm run build
 ```
 
-The static output is generated in:
-
-```text
-dist/
-```
-
-Preview the production build locally:
+Preview the production build:
 
 ```sh
 npm run preview
 ```
 
-## Cloudflare Pages
+## Deployment
 
-Use these settings when creating the Cloudflare Pages project:
+This site is static and Cloudflare Pages friendly.
+
+Cloudflare Pages settings:
 
 ```text
-Framework preset: Astro
 Build command: npm run build
-Build output directory: dist
-Node version: 22.12.0 or newer
+Output directory: dist
 ```
 
-No backend, server runtime, database, or environment variables are required for the current static site.
+No backend, analytics, database, or server runtime is required.
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── ArchitectureDiagram.astro
+│   ├── Footer.astro
+│   ├── Navbar.astro
+│   ├── ProjectCard.astro
+│   ├── SectionHeader.astro
+│   └── TechBadge.astro
+├── layouts/
+│   └── Layout.astro
+├── pages/
+│   ├── contact.astro
+│   ├── index.astro
+│   ├── infrastructure-lab.astro
+│   ├── projects.astro
+│   ├── resume.astro
+│   └── security-notes.astro
+└── styles/
+    └── global.css
+```
+
+## License
+
+License not specified.

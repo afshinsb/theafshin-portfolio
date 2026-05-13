@@ -3,20 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 ---
 
-<Layout title="Contact | Afshin Saberi">
+<Layout
+  title="Contact | Afshin Saberi"
+  description="Privacy-conscious contact page for professional inquiries through public professional profiles."
+>
   <section class="py-10">
     <SectionHeader
       eyebrow="Connect"
       title="Contact"
       description="For professional inquiries, please connect with me on LinkedIn."
     />
-    <div class="max-w-2xl rounded-lg border border-white/10 bg-slate-950/70 p-6">
-      <p class="text-slate-300">
+    <div class="max-w-2xl rounded-lg border border-[color:var(--border)] bg-[var(--surface)] p-6">
+      <p class="text-[var(--text-soft)]">
         I keep direct contact details private on this static site. Use professional profiles for verified outreach.
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
-        <a class="rounded-md bg-cyan-300 px-4 py-3 text-sm font-semibold text-slate-950" href="#" aria-label="LinkedIn profile placeholder">LinkedIn</a>
-        <a class="rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:border-cyan-300/50 hover:bg-white/5" href="#" aria-label="GitHub profile placeholder">GitHub</a>
+        <a class="rounded-md bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--button-text)]" href="https://www.linkedin.com/in/theafshin/" rel="noreferrer" aria-label="Afshin Saberi on LinkedIn">LinkedIn</a>
+        <a class="rounded-md border border-[color:var(--border-strong)] px-4 py-3 text-sm font-semibold text-[var(--text-strong)] hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)]" href="https://github.com/afshinsb" rel="noreferrer" aria-label="Afshin Saberi on GitHub">GitHub</a>
       </div>
     </div>
   </section>
