@@ -3,5 +3,15 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-7xl border-t border-[color:var(--border)] px-4 py-8 text-sm text-[var(--text-faint)] sm:px-6 lg:px-8">
-  <p>&copy; {year} Afshin Saberi. Built with Astro and deployed through Cloudflare.</p>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p>&copy; {year} Afshin Saberi. Built with Astro and deployed through Cloudflare.</p>
+    <a
+      class="text-[var(--text-soft)] transition hover:text-[var(--accent)]"
+      href="https://github.com/afshinsb"
+      rel="noreferrer"
+      aria-label="Afshin Saberi on GitHub"
+    >
+      GitHub
+    </a>
+  </div>
 </footer>
