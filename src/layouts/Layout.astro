@@ -50,9 +50,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://example.
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
   </head>
-  <body class="antialiased">
+  <body class="flex min-h-dvh flex-col antialiased">
     <Navbar />
-    <main class="mx-auto min-h-screen w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
       <slot />
     </main>
     <Footer />
