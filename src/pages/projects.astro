@@ -5,6 +5,27 @@ import SectionHeader from '../components/SectionHeader.astro';
 
 const projects = [
   {
+    title: 'Universal Subtitle Translator',
+    summary: 'A self-hosted AI subtitle translation app for local media workflows, with a simulated public demo for safe review.',
+    focus: [
+      'FastAPI service packaged for Docker Compose and Portainer deployment',
+      'Authentication, configuration health, batch jobs, and operational logs',
+      'Mounted media workflow keeps subtitle files on the host; public demo makes no uploads, API calls, or secret use',
+    ],
+    technologies: ['FastAPI', 'Docker', 'Docker Compose', 'Portainer', 'OpenAI API', 'Cloudflare Pages'],
+    links: [
+      {
+        label: 'View Demo',
+        href: 'https://translate.theafshin.com/',
+        variant: 'primary',
+      },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/afshinsb/universal-subtitle-translator',
+      },
+    ],
+  },
+  {
     title: 'Self-Hosted Service Stack',
     summary: 'A small Linux/Docker service environment focused on stable ingress, private administration, and service isolation.',
     focus: [

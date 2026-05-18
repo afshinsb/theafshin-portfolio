@@ -4,6 +4,11 @@ interface Props {
   summary: string;
   focus: string[];
   technologies: string[];
+  links?: {
+    label: string;
+    href: string;
+    variant?: 'primary' | 'secondary';
+  }[];
 }
 
 const {
@@ -11,6 +16,7 @@ const {
   summary,
   focus = [],
   technologies = [],
+  links = [],
 } = Astro.props as Props;
 ---
 
@@ -23,4 +29,26 @@ const {
   <div class="mt-5 flex flex-wrap gap-2">
     {technologies.map((technology) => <span class="rounded-md bg-[var(--surface-hover)] px-2.5 py-1 text-xs text-[var(--text)]">{technology}</span>)}
   </div>
+  {
+    links.length > 0 && (
+      <div class="mt-6 flex min-w-0 flex-col gap-3 min-[430px]:flex-row min-[430px]:flex-wrap">
+        {
+          links.map((link) => (
+            <a
+              class:list={[
+                'inline-flex w-full max-w-full justify-center rounded-md px-4 py-2.5 text-center text-sm font-semibold transition min-[430px]:w-auto',
+                link.variant === 'primary'
+                  ? 'bg-[var(--accent)] text-[var(--button-text)] hover:bg-[var(--accent-strong)]'
+                  : 'border border-[color:var(--border-strong)] text-[var(--text-strong)] hover:border-[color:var(--accent-border-hover)] hover:bg-[var(--surface-hover)]',
+              ]}
+              href={link.href}
+              rel="noreferrer"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    )
+  }
 </article>
